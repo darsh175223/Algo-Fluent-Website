@@ -1,59 +1,82 @@
 import express from 'express';
 import {User} from "../models/userLogin.js";
-
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
 //route to POST user
-router.post('/', async (request, response)=>{
+router.post('/', async (request, response) => {
+    console.log('username: '+request.body.userName+', password: '+request.body.password);
+
+    try {
+      const newUser1 = {
+        firstName: request.body.firstName,
+        lastName: request.body.lastName,
+        userName: request.body.userName,
+        password: request.body.password
+      };
+  
+      const userSend = await User.create(newUser1);
+      return response.status(201).send(userSend);
+    } catch (error) {
+      console.log(error);
+      response.status(500).send({ message: error.message });
+    }
+  });
+
+  router.patch('/', async (request, response) => {
+    console.log('username: '+request.body.username+', password: '+request.body.password);
     try{
-        if(
-            !request.body.firstName ||
-            !request.body.lastName ||
-            !request.body.userName ||
-            !request.body.password 
-        ){
-            return response.status(400).send({
-                message: 'send all required parameters  ',
-            }
+        console.log('username: '+request.body.username+' but the password: '+request.body.password);
 
-            )
-        }
-        const newUser1 = {
-            firstName:request.body.firstName,
-            lastName:request.body.lastName,
-            userName:request.body.userName,
-            password:request.body.password,
+        const u = request.body.password;
+        console.log('testing u: '+u);
 
-        }
-        const userSend = await User.create(newUser1);
+        
+        const userSend = await User.findOne({userName: u});
+        console.log(userSend);
+        console.log(request.body.password+' vs '+userSend.password);
+        if(request.body.password==userSend.password){
+            console.log("passwords matched!!!");
+            return response.status(200).json({
+                count: userSend.length,
+                data: userSend
+            });
+        }else{
+            response.status(500).send({message: 'passwords didnt match'});
 
-        return response.status(201).send(userSend);
+        }     
+
 
     }catch(error){
         console.log(error.message);
         response.status(500).send({message: error.message});
+
+
     }
-})
+  });
 
 //route to GET all users
-router.get('/', async(request, response)=>{
-    try{
-        const userSend = await User.find({});
-        return response.status(200).json({
-            count: userSend.length,
-            data: userSend
-        });
+
+
+// router.get('/', async(request, response)=>{
+//     try{
+//         const userSend = await User.find({});
+//         return response.status(200).json({
+//             count: userSend.length,
+//             data: userSend
+//         });
 
 
 
-    }catch(error){
-        console.log(error.message);
-        response.status(500).send({message: error.message});
+//     }catch(error){
+//         console.log(error.message);
+//         response.status(500).send({message: error.message});
 
 
-    }
-})
+//     }
+// });
 
 //get one book form database using id
 router.get('/:id', async(request, response)=>{
@@ -72,6 +95,9 @@ router.get('/:id', async(request, response)=>{
 
     }
 });
+
+
+
 
 //route to update data
 router.put('/:id', async(request, response)=>{
@@ -108,5 +134,8 @@ router.put('/:id', async(request, response)=>{
 
     }
 });
+
+
+
 
 export default router;
