@@ -1,0 +1,49 @@
+/* HashmapVisualizer.css */
+.visualizer-container {
+    text-align: center;
+  }
+  
+  .hashmap-table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 40px 0;
+    width: 100%;
+  }
+  
+  .hashmap-header, .hashmap-cell {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .linked-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .linked-list li {
+    position: relative;
+    margin: 5px 0;
+  }
+  
+  .linked-list li::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    background-color: black;
+  }
+  
+  .linked-list li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10px;
+    height: 2px;
+    background-color: black;
+  }
+  

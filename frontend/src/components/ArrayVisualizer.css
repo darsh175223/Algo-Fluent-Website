@@ -1,0 +1,24 @@
+.visualizer-container {
+    text-align: center;
+  }
+  
+  .array-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .array-item {
+    display: inline-block;
+    margin: 1px;
+    padding: 25px;
+    border: 1px solid black;
+    transition: background-color 0.5s, color 0.5s;
+    background-color: #FFF0FF;
+  }
+  
+  .highlight {
+    background-color: red;
+    color: white;
+  }
+  

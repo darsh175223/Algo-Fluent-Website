@@ -1,0 +1,73 @@
+.visualizer-container {
+    text-align: center;
+  }
+  
+  .tree-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    position: relative;
+  }
+  
+  .node-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 50%; /* Make the node circular */
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.5s, color 0.5s;
+  }
+  
+  .highlight {
+    background-color: red;
+    color: white;
+  }
+  
+  .tree-children {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+  
+  .tree-branch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+  }
+  
+  .left-branch {
+    margin-right: 50px; /* Adjust this value for spacing */
+  }
+  
+  .right-branch {
+    margin-left: 50px; /* Adjust this value for spacing */
+  }
+  
+  .tree-arrow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .left-arrow line,
+  .right-arrow line {
+    stroke: black;
+    stroke-width: 0;
+  }
+  

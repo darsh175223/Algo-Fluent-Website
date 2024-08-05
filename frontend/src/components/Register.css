@@ -1,0 +1,95 @@
+.register-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #bac4d3;
+    padding: 1rem; /* Added padding to ensure centering with smaller width */
+  }
+  
+  .register-right {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px; /* Adjusted max-width to make it smaller */
+    width: 100%;
+  }
+  
+  .register-right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .register-center {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .register-center h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .register-center p {
+    margin-bottom: 1rem;
+    color: #777;
+  }
+  
+  .register-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .pass-input-div {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .password-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #777;
+  }
+  
+  .register-center-buttons {
+    width: 100%;
+  }
+  
+  .register-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .register-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .register-bottom-p {
+    margin-top: 1rem;
+    color: #777;
+  }
+  
+  .register-bottom-p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .register-bottom-p a:hover {
+    text-decoration: underline;
+  }
+  

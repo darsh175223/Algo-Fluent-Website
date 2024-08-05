@@ -1,0 +1,11 @@
+/* src/components/Slideshow.css */
+.slideshow-container {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .slide-image {
+    width: 100%;
+    height: auto;
+  }
+  
