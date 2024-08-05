@@ -5,14 +5,14 @@ const router = express.Router();
 
 //route to POST user
 router.post('/', async (request, response) => {
-    console.log('username: '+request.body.userName+', password: '+request.body.password);
 
     try {
       const newUser1 = {
         firstName: request.body.firstName,
         lastName: request.body.lastName,
         userName: request.body.userName,
-        password: request.body.password
+        password: request.body.password,
+        lvl: '0',
       };
   
       const userSend = await User.create(newUser1);
@@ -23,18 +23,22 @@ router.post('/', async (request, response) => {
     }
   });
 
+//   {
+//     "firstName": "fn",
+//     "lastName": "ln",
+//     "userName": "un",
+//     "password": "pw"
+
+// }
+//IMPORTANT: userLOGIN function
   router.patch('/', async (request, response) => {
-    console.log('username: '+request.body.username+', password: '+request.body.password);
     try{
-        console.log('username: '+request.body.username+' but the password: '+request.body.password);
 
         const u = request.body.password;
-        console.log('testing u: '+u);
 
         
         const userSend = await User.findOne({userName: u});
-        console.log(userSend);
-        console.log(request.body.password+' vs '+userSend.password);
+    
         if(request.body.password==userSend.password){
             console.log("passwords matched!!!");
             return response.status(200).json({
@@ -55,16 +59,51 @@ router.post('/', async (request, response) => {
     }
   });
 
+
+    // Route to get the level of a user by username
+router.patch('/:id', async (request, response) => {
+    try {
+        const u = request.body.username;
+        console.log("request:  ",request.body)
+        const userSend = await User.findOne({userName: u});
+        console.log("level:  ",userSend.lvl)
+        
+
+        return response.status(200).json({
+            level : userSend.lvl
+        });
+     
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
+    }
+  });
+
+  
+
 //route to GET all users
 
+router.get('/', async (request, response) => {
+    try {
+      const user = await User.find({});
+  
+      return response.status(200).json({
+        count: user.length,
+        data: user,
+      });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
+    }
+  });
 
-// router.get('/', async(request, response)=>{
+//get one book form database using id
+// router.get('/:id', async(request, response)=>{
 //     try{
-//         const userSend = await User.find({});
-//         return response.status(200).json({
-//             count: userSend.length,
-//             data: userSend
-//         });
+//         const {id} = request.params;
+//         const userSend = await User.findById(id);
+
+//         return response.status(200).json(userSend);
 
 
 
@@ -75,24 +114,6 @@ router.post('/', async (request, response) => {
 
 //     }
 // });
-
-//get one book form database using id
-router.get('/:id', async(request, response)=>{
-    try{
-        const {id} = request.params;
-        const userSend = await User.findById(id);
-
-        return response.status(200).json(userSend);
-
-
-
-    }catch(error){
-        console.log(error.message);
-        response.status(500).send({message: error.message});
-
-
-    }
-});
 
 
 
@@ -132,6 +153,27 @@ router.put('/:id', async(request, response)=>{
 
     }
 });
+
+// Route for Delete a book
+router.delete('/:id', async (request, response) => {
+    try {
+      const { id } = request.params;
+  
+      const result = await User.findByIdAndDelete(id);
+  
+      if (!result) {
+        return response.status(404).json({ message: 'User not found' });
+      }
+  
+      return response.status(200).send({ message: 'Book deleted successfully' });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
+    }
+  });
+
+  
+
 
 
 
