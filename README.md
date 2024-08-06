@@ -39,7 +39,9 @@ Algofluent is a dynamic website designed to visualize various data structures an
 - **Deployment**: Deployed using Docker, Render, and Netlify.
 
 ## Website
-https://66b199f8cc557f67e18d11f3--superb-clafoutis-f38617.netlify.app/
+https://66b199f8cc557f67e18d11f3--superb-clafoutis-f38617.netlify.app/  
+- if facing issues with login, kindly wait a minute to see if it works
+- if not try to contact
 
 
 
