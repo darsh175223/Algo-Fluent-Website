@@ -39,7 +39,7 @@ const UserDashboard = () => {
     console.log('data: ', data);
 
     axios
-      .patch('http://localhost:5555/userlogin/66b003573647ff879e66f08e', data)
+      .patch('https://algo-fluent-websitebackend.onrender.com/userlogin/66b003573647ff879e66f08e', data)
       .then((res) => {
         setUserLevel(res.data.level);
         console.log(res.data.level);
@@ -85,7 +85,7 @@ const UserDashboard = () => {
       console.log('data: ', data);
 
       axios
-        .patch('http://localhost:5555/userupdate', data)
+        .patch('https://algo-fluent-websitebackend.onrender.com/userupdate', data)
         .then((response2) => {
           setUserLevel(response2.data.level);
           console.log(response2.data.level);
