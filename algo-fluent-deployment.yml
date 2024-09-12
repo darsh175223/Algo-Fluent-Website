@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3  # Increased replicas for better rolling update demonstration
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: dmtornadomirror1/algofluent-frontend:v1.1
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+      - name: backend
+        image: dmtornadomirror1/algofluent-backend:v1.1
+        ports:
+        - containerPort: 81
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+
+  #  kubectl apply -f Kubernetes/algo-fluent-deployment.yml
