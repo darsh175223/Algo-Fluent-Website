@@ -1,13 +1,21 @@
 
 # Algofluent
 
-Algofluent is a dynamic website designed to visualize various data structures and algorithms. It features interactive visualizations for data structures like arrays, hashmaps, and binary search trees, as well as algorithm visualizations for selection sort, linear regression, logistic regression, and a Dijkstra's algorithm-based pathfinding game. The project also includes user authentication using the MERN stack and handwritten digit recognition using a Python backend.
+Algofluent is an interactive e-learning platform designed to simplify complex Computer Science concepts through dynamic visualizations and gamification. Built with React, Node.js, Express.js, and MongoDB, it offers a comprehensive suite of 20+ interactive visualizations for data structures, algorithms, regression models, neural networks, and programming lessons.
+
+Key features include:
+- Interactive visualizations for various data structures and algorithms
+- Gamification elements to boost user engagement
+- User authentication using the MERN stack
+- Handwritten digit recognition powered by a Flask-based microservice with TensorFlow
+- Robust deployment using Kubernetes for high availability and efficient resource management
+
 
 ## Features
 
 ### Data Structure Visualizations
 -  Add or delete elements and see the structure update in real-time.
-=
+
 ### Algorithm Visualizations
 - **Sortine algorithms**: An interactive visualizer with a slider to adjust the array size, a sort button, and a bar graph to display the array.
 - **Linear Regression**: Add points to an interactive coordinate graph, which generates and updates a regression line automatically.
@@ -47,5 +55,4 @@ This project is licensed under the MIT License.
 For any questions or feedback, please contact Darshan Mundewadi:
 - **LinkedIn**: [linkedin.com/in/darshan-mundewadi](https://www.linkedin.com/in/darshan-mundewadi)
 - **GitHub**: [github.com/darsh175223](https://github.com/darsh175223)
-```
 
