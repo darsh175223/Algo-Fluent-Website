@@ -124,7 +124,6 @@ function App() {
               <div className={`dropdown-menu ${openGames ? 'active' : 'inactive'}`}>
                 <ul>
                   <DropdownItem text="Digits game" link="/DigitPage" />
-                  <DropdownItem text="Pong" link="/Pong" />
 
 
                 </ul>
