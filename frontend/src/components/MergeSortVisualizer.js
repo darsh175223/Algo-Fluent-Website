@@ -108,7 +108,7 @@ const MergeSortVisualizer = () => {
   return (
     <div>
       <center>
-        <h1>Merge Sort</h1>
+        <h1>Merge Sort (see explanation below)</h1>
         <div className="controls">
           <label>
             Array Size:
@@ -125,6 +125,75 @@ const MergeSortVisualizer = () => {
         </div>
       </center>
       <BarGraph array={array} />
+
+      {/* Add a spacer div to create vertical space */}
+      <div style={{ height: '450px' }}></div>
+
+      <div className="merge-sort-explanation" style={{ marginTop: 20, textAlign: 'left', maxWidth: '800px', margin: '0 auto', padding: '20px', backgroundColor: '#f0f0f0', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+        <h3 style={{ color: '#333', borderBottom: '2px solid #333', paddingBottom: '10px' }}>What is Merge Sort?</h3>
+        <p>
+          Merge Sort is an efficient, stable, divide-and-conquer sorting algorithm. It works by dividing the unsorted list into n sublists, each containing one element (a list of one element is considered sorted). Then, it repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.
+        </p>
+        
+        <h4 style={{ color: '#333', marginTop: '20px' }}>History and Creation:</h4>
+        <p style={{ lineHeight: '1.6', color: '#444' }}>
+          Merge Sort was invented by John von Neumann in 1945. It was one of the first sorting algorithms to be rigorously analyzed in terms of its computational complexity. The algorithm's "divide and conquer" approach became a cornerstone in the development of many other efficient algorithms.
+        </p>
+        
+        <h4 style={{ color: '#333', marginTop: '20px' }}>Trivia:</h4>
+        <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
+          <li>Merge Sort has a time complexity of O(n log n), making it much more efficient than simpler algorithms like Bubble Sort for large datasets.</li>
+          <li>It is a stable sort, meaning that it preserves the relative order of equal elements in the sorted output.</li>
+          <li>Merge Sort is the algorithm of choice for sorting linked lists due to its ability to sort without random access to elements.</li>
+          <li>The algorithm requires additional space proportional to the size of the input array, which can be a drawback in memory-constrained environments.</li>
+        </ul>
+        
+        <h4 style={{ color: '#333', marginTop: '20px' }}>Use Cases:</h4>
+        <ol style={{ paddingLeft: '20px' }}>
+          <li><strong>External sorting:</strong> Used when the data to be sorted is too large to fit into memory.</li>
+          <li><strong>Sorting linked lists:</strong> Merge Sort is particularly efficient for sorting linked lists.</li>
+          <li><strong>Inversion count problem:</strong> Can be used to efficiently solve the problem of counting inversions in an array.</li>
+          <li><strong>Parallel processing:</strong> The divide-and-conquer nature of Merge Sort makes it suitable for parallel implementation.</li>
+          <li><strong>Stable sorting requirement:</strong> When maintaining the relative order of equal elements is important.</li>
+        </ol>
+        
+        <h4 style={{ color: '#333', marginTop: '20px' }}>Example Implementation:</h4>
+        <pre style={{ backgroundColor: '#e0e0e0', padding: '10px', borderRadius: '5px' }}>
+          <code>
+{`function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  const mid = Math.floor(arr.length / 2);
+  const left = arr.slice(0, mid);
+  const right = arr.slice(mid);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+  let result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      result.push(left[leftIndex]);
+      leftIndex++;
+    } else {
+      result.push(right[rightIndex]);
+      rightIndex++;
+    }
+  }
+
+  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+}`}
+          </code>
+        </pre>
+        
+        <p style={{ lineHeight: '1.6', color: '#444', marginTop: '15px' }}>
+          Merge Sort's efficiency and stability make it a popular choice in various applications, especially when dealing with large datasets or when stable sorting is required. Its divide-and-conquer approach also serves as an excellent introduction to more advanced algorithmic concepts.
+        </p>
+      </div>
     </div>
   );
 };
