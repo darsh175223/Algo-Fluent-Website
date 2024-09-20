@@ -28,6 +28,7 @@ import CsharpTutorial from './pages/CsharpTutorial';
 import Cplusplus_Tutorial from './pages/Cplusplus_Tutorial';
 import JavaTutorial from './pages/JavaTutorial';
 import DockerTutorial from './pages/DockerTutorial';
+import ScheduleSession from './pages/ScheduleSession';
 
 
 
@@ -174,6 +175,7 @@ function App() {
         <Route path="/Cplusplus_Tutorial" element={<Cplusplus_Tutorial />} />
         <Route path="/JavaTutorial" element={<JavaTutorial />} />
         <Route path="/DockerTutorial" element={<DockerTutorial />} />
+        <Route path="/ScheduleSession" element={<ScheduleSession />} />
 
 
 
