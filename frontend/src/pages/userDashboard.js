@@ -10,7 +10,7 @@ import img4 from '.././pics/Badge-Trophy-Diamond-icon.png';
 
 const UserDashboard = () => {
   const location = useLocation();
-  const [username, setUserName] = useState(location.state.username);
+  const [username, setUserName] = useState(location.state?.username || 'Guest'); // Fallback to 'Guest'
   const [userLevel, setUserLevel] = useState(0);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -114,7 +114,7 @@ const UserDashboard = () => {
       alignItems: 'center'
     }}>
       <div style={{
-        width: '1400px',
+        width: '1100px',
         height: '800px',
         backgroundColor: '#e3e2df',
         boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
@@ -124,11 +124,17 @@ const UserDashboard = () => {
           <h1 style={{ color: '#1f2833', margin: '30px 0 20px', fontSize: '50px' }}>Welcome, {username}!</h1>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '50px' }}>
           <img src={getBadgeImage()} alt="Badge" style={{ width: '100px', height: 'auto' }} />
-          <progress value={userLevel * 5} max="100" style={{ width: '200px', height: '20px', color: 'green' }}></progress>
+          <div style={{ display: 'flex', justifyContent: 'space-between', width: '500px', alignItems: 'center' }}>
+            <progress value={userLevel * 5} max="100" style={{ width: '350px', height: '20px', color: 'green' }}></progress>
+            <div style={{ width: '20px' }}></div>
+            <Link to="/ScheduleSession" style={{ backgroundColor: '#4CAF50', color: 'white', padding: '15px 15px', margin: '4px 2px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px' }}>
+              Schedule Study Sessions
+            </Link>
+          </div>
           </div>
          
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', width: '1000px',
-        height: '200px'}}>
+        height: '300px', marginTop: '50px'}}>
             <Link to="/pythonTutorial" onClick={() => handleImageClick(9)}>
               <img
                 src={require('.././pics/Python-Logo.png')}
