@@ -1,7 +1,7 @@
 
 # Algofluent
 
-Algofluent is an interactive e-learning platform designed to simplify complex Computer Science concepts through dynamic visualizations and gamification. Built with React, Node.js, Express.js, and MongoDB, it offers a comprehensive suite of 20+ interactive visualizations for data structures, algorithms, regression models, neural networks, and programming lessons. In addition, it includes a schedule session feature that uses AI Agents to recommend topics based on user experience level.
+Algofluent is an interactive e-learning platform designed to simplify complex Computer Science concepts through dynamic visualizations and gamification. Built with React, Node.js, Express.js, and MongoDB, it offers a comprehensive suite of 20+ interactive visualizations for data structures, algorithms, regression models, neural networks, and programming lessons. In addition, it includes a schedule session feature that uses AI Agents to recommend topics adn schedule a personalized study plan on Google Calendar based on user experience level.
 
 Key features include:
 - Interactive visualizations for various data structures and algorithms
