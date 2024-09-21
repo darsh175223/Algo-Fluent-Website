@@ -3,8 +3,6 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
-
-
 const UserDashboard = () => {
   const location = useLocation();
   const [knowledgeLevel, setKnowledgeLevel] = useState('');
@@ -14,6 +12,11 @@ const UserDashboard = () => {
   
   // New state to keep track of the last scheduled date
   const [lastScheduledDate, setLastScheduledDate] = useState(null);
+
+  // New state for user input topic and its difficulty
+  const [userTopic, setUserTopic] = useState('');
+  const [topicDifficulty, setTopicDifficulty] = useState('');
+  const [gaugingDifficulty, setGaugingDifficulty] = useState(false);
 
   const csTopics = [
     'Linked Lists', 'BST', 'HashMaps', 'Selection Sort', 'Quick Sort',
@@ -25,10 +28,11 @@ const UserDashboard = () => {
     intermediate: ['BST', 'Quick Sort', 'Merge Sort'],
     expert: ['HashMaps', 'Bubble Sort', 'Radix Sort']
   };
+  const API_KEY = "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";
 
+  // Function to classify a topic using Hugging Face API
   const classifyTopic = async (topic) => {
     const API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli";
-    const API_KEY = "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";
 
     console.log(`Classifying topic: ${topic}`);
 
@@ -54,6 +58,7 @@ const UserDashboard = () => {
     }
   };
 
+  // Function to get topic recommendations
   const getTopicRecommendations = async () => {
     setLoading(true);
     console.log('Fetching topic recommendations...');
@@ -95,41 +100,82 @@ const UserDashboard = () => {
 
   // Function to create a Google Calendar event URL
   const createGoogleCalendarEventUrl = (topic, date) => {
-    const eventTitle = encodeURIComponent(`Study ${topic} on AlgoFluent, Take quiz`); // Updated title
-    const eventDetails = encodeURIComponent(`Study session for ${topic}`); // Event details remain the same
-    const eventDate = date.toISOString().replace(/-|:|\.\d\d\d/g,""); // Format date for Google Calendar
+    const eventTitle = encodeURIComponent(`Study ${topic} on AlgoFluent, Take quiz`);
+    const eventDetails = encodeURIComponent(`Study session for ${topic}`);
+    const eventDate = date.toISOString().replace(/-|:|\.\d\d\d/g,"");
+    const endDate = new Date(date.getTime() + 20 * 60000);
+    const eventEndDate = endDate.toISOString().replace(/-|:|\.\d\d\d/g,"");
 
-    // Calculate end date for 20 minutes duration
-    const endDate = new Date(date.getTime() + 20 * 60000); // Add 20 minutes
-    const eventEndDate = endDate.toISOString().replace(/-|:|\.\d\d\d/g,""); // Format end date
-
-    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&dates=${eventDate}/${eventEndDate}`; // Updated URL
+    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&dates=${eventDate}/${eventEndDate}`;
   };
 
   // Function to handle adding a topic to the study plan
   const handleAddToStudyPlan = (topic) => {
     console.log(`Adding ${topic} to study plan`);
     
-    // Calculate the next study date
     let nextStudyDate;
     if (lastScheduledDate) {
       nextStudyDate = new Date(lastScheduledDate);
       nextStudyDate.setDate(nextStudyDate.getDate() + 1);
     } else {
       nextStudyDate = new Date();
-      nextStudyDate.setDate(nextStudyDate.getDate() + 1); // Start from tomorrow
+      nextStudyDate.setDate(nextStudyDate.getDate() + 1);
     }
     
     console.log(`Scheduled study date for ${topic}: ${nextStudyDate}`);
     
-    // Create and open the Google Calendar event URL
     const eventUrl = createGoogleCalendarEventUrl(topic, nextStudyDate);
     window.open(eventUrl, '_blank');
     
-    // Update the last scheduled date
     setLastScheduledDate(nextStudyDate);
     
     enqueueSnackbar(`Added ${topic} to your study plan for ${nextStudyDate.toDateString()}`, { variant: 'success' });
+  };
+
+  // Function to gauge difficulty of a user-input topic
+  const gaugeDifficulty = async () => {
+    console.log(`Gauging difficulty for topic: ${userTopic}`);
+    setGaugingDifficulty(true);
+
+    const API_URL = "https://api-inference.huggingface.co/models/gpt2";
+    const headers = {
+      Authorization: `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json',
+    };
+
+    const prompt = `Hi, I'm an expert in Computer Science topics and I can rank a computer science topic by the order of Very easy, easy, medium, hard, very hard. I would say the computer science topic of ${userTopic} is: `;
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ inputs: prompt }),
+      });
+
+      if (!response.ok) {
+        // Check if the response status indicates too many requests
+        if (response.status === 429) {
+          alert("Too many requests. Try again later."); // Alert for too many requests
+        } else {
+          throw new Error('Failed to gauge difficulty.'); // Throw error for other failures
+        }
+      }
+
+      const data = await response.json();
+      console.log('GPT-2 response:', data[0].generated_text);
+
+      // Extract the first word of the response
+      const difficulty = data[0].generated_text.split(' ')[0];
+      console.log('Extracted difficulty:', difficulty);
+
+      setTopicDifficulty(difficulty);
+      enqueueSnackbar(`Difficulty of "${userTopic}" gauged successfully!`, { variant: 'success' });
+    } catch (error) {
+      console.error('Error gauging difficulty:', error);
+      enqueueSnackbar('Failed to gauge difficulty. Please try again.', { variant: 'error' });
+    } finally {
+      setGaugingDifficulty(false);
+    }
   };
 
   return (
@@ -203,6 +249,37 @@ const UserDashboard = () => {
             </ul>
           </div>
         )}
+
+        {/* New section for gauging topic difficulty */}
+        <div style={{ marginTop: '30px', textAlign: 'center' }}>
+          <h3>Gauge Topic Difficulty</h3>
+          <input
+            type="text"
+            value={userTopic}
+            onChange={(e) => setUserTopic(e.target.value)}
+            placeholder="Enter a CS topic"
+            style={{ marginRight: '10px', padding: '5px' }}
+          />
+          <button
+            onClick={gaugeDifficulty}
+            disabled={gaugingDifficulty || !userTopic}
+            style={{
+              backgroundColor: 'blue',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              padding: '5px 10px',
+              cursor: 'pointer'
+            }}
+          >
+            {gaugingDifficulty ? 'Gauging...' : 'Gauge Difficulty'}
+          </button>
+          {topicDifficulty && (
+            <p style={{ marginTop: '10px' }}>
+              The difficulty of "{userTopic}" is estimated to be: <strong>{topicDifficulty}</strong>
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
