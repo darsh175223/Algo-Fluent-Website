@@ -3,10 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
-import img1 from '.././pics/bronzeBadge.png';
-import img2 from '.././pics/silverBadge.png';
-import img3 from '.././pics/blank-gold-badge-label-2.png';
-import img4 from '.././pics/Badge-Trophy-Diamond-icon.png';
+
 
 const UserDashboard = () => {
   const location = useLocation();
@@ -14,6 +11,9 @@ const UserDashboard = () => {
   const [topics, setTopics] = useState({ beginner: [], intermediate: [], expert: [] });
   const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
+  
+  // New state to keep track of the last scheduled date
+  const [lastScheduledDate, setLastScheduledDate] = useState(null);
 
   const csTopics = [
     'Linked Lists', 'BST', 'HashMaps', 'Selection Sort', 'Quick Sort',
@@ -93,6 +93,45 @@ const UserDashboard = () => {
 
   const displayTopics = topics[knowledgeLevel.toLowerCase()] || [];
 
+  // Function to create a Google Calendar event URL
+  const createGoogleCalendarEventUrl = (topic, date) => {
+    const eventTitle = encodeURIComponent(`Study ${topic} on AlgoFluent, Take quiz`); // Updated title
+    const eventDetails = encodeURIComponent(`Study session for ${topic}`); // Event details remain the same
+    const eventDate = date.toISOString().replace(/-|:|\.\d\d\d/g,""); // Format date for Google Calendar
+
+    // Calculate end date for 20 minutes duration
+    const endDate = new Date(date.getTime() + 20 * 60000); // Add 20 minutes
+    const eventEndDate = endDate.toISOString().replace(/-|:|\.\d\d\d/g,""); // Format end date
+
+    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&dates=${eventDate}/${eventEndDate}`; // Updated URL
+  };
+
+  // Function to handle adding a topic to the study plan
+  const handleAddToStudyPlan = (topic) => {
+    console.log(`Adding ${topic} to study plan`);
+    
+    // Calculate the next study date
+    let nextStudyDate;
+    if (lastScheduledDate) {
+      nextStudyDate = new Date(lastScheduledDate);
+      nextStudyDate.setDate(nextStudyDate.getDate() + 1);
+    } else {
+      nextStudyDate = new Date();
+      nextStudyDate.setDate(nextStudyDate.getDate() + 1); // Start from tomorrow
+    }
+    
+    console.log(`Scheduled study date for ${topic}: ${nextStudyDate}`);
+    
+    // Create and open the Google Calendar event URL
+    const eventUrl = createGoogleCalendarEventUrl(topic, nextStudyDate);
+    window.open(eventUrl, '_blank');
+    
+    // Update the last scheduled date
+    setLastScheduledDate(nextStudyDate);
+    
+    enqueueSnackbar(`Added ${topic} to your study plan for ${nextStudyDate.toDateString()}`, { variant: 'success' });
+  };
+
   return (
     <div style={{
       backgroundImage: `url(${require('.././pics/Gradient.png')})`,
@@ -143,7 +182,23 @@ const UserDashboard = () => {
             <h3 style={{ textTransform: 'capitalize' }}>{knowledgeLevel} Topics:</h3>
             <ul>
               {displayTopics.map((topic, index) => (
-                <li key={index}>{topic}</li>
+                <li key={index} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                  {topic}
+                  <button 
+                    style={{ 
+                      marginLeft: '20px',
+                      backgroundColor: 'green', 
+                      color: 'white', 
+                      border: 'none', 
+                      borderRadius: '5px', 
+                      padding: '5px 10px',
+                      cursor: 'pointer' 
+                    }}
+                    onClick={() => handleAddToStudyPlan(topic)}
+                  >
+                    Add to Study Plan
+                  </button>
+                </li>
               ))}
             </ul>
           </div>
