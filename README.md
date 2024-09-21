@@ -9,6 +9,7 @@ Key features include:
 - User authentication using the MERN stack
 - Handwritten digit recognition powered by a Flask-based microservice with TensorFlow
 - Robust deployment using Kubernetes for high availability and efficient resource management
+- Automated study planner
 
 
 ## Features
