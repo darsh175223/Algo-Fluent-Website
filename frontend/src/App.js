@@ -29,6 +29,7 @@ import Cplusplus_Tutorial from './pages/Cplusplus_Tutorial';
 import JavaTutorial from './pages/JavaTutorial';
 import DockerTutorial from './pages/DockerTutorial';
 import ScheduleSession from './pages/ScheduleSession';
+import DSA_quizzes from './pages/DSA_quizzes';
 
 
 
@@ -176,6 +177,7 @@ function App() {
         <Route path="/JavaTutorial" element={<JavaTutorial />} />
         <Route path="/DockerTutorial" element={<DockerTutorial />} />
         <Route path="/ScheduleSession" element={<ScheduleSession />} />
+        <Route path="/DSA_quizzes" element={<DSA_quizzes />} />
 
 
 
