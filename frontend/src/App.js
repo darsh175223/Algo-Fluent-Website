@@ -30,6 +30,8 @@ import JavaTutorial from './pages/JavaTutorial';
 import DockerTutorial from './pages/DockerTutorial';
 import ScheduleSession from './pages/ScheduleSession';
 import DSA_quizzes from './pages/DSA_quizzes';
+import Linked_List_Quiz from './pages/Linked_List_Quiz';
+
 
 
 
@@ -178,6 +180,7 @@ function App() {
         <Route path="/DockerTutorial" element={<DockerTutorial />} />
         <Route path="/ScheduleSession" element={<ScheduleSession />} />
         <Route path="/DSA_quizzes" element={<DSA_quizzes />} />
+        <Route path="/Linked_List_Quiz" element={<Linked_List_Quiz />} />
 
 
 
