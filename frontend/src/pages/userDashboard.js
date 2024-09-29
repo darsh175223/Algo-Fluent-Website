@@ -130,6 +130,9 @@ const UserDashboard = () => {
             <Link to="/ScheduleSession" style={{ backgroundColor: '#4CAF50', color: 'white', padding: '15px 15px', margin: '4px 2px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px' }}>
               Schedule Study Sessions
             </Link>
+            <Link to="/DSA_quizzes" style={{ backgroundColor: '#E0BBE4', color: 'black', padding: '15px 15px', margin: '4px 2px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px' }}>
+              Additional Quizzes
+            </Link>
           </div>
           </div>
          
@@ -244,6 +247,26 @@ const UserDashboard = () => {
               />
             </Link>
           </div>
+        <Link to="/user_review" style={{
+            backgroundColor: 'yellow',
+            color: 'black',
+            padding: '25px 50px',
+            border: 'none',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            margin: '20px 0',
+            fontSize: '24px',
+            boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
+            textDecoration: 'none',
+            position: 'absolute',
+            top: '750px',
+            left: '650px',
+          }}>
+          Reviews
+        </Link>
+
+
+        
         </center>
       </div>
     </div>

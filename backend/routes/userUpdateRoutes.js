@@ -56,7 +56,36 @@ router2.patch('/', async (request, response) => {
     }
   });
   
+// Route to update the review field for a user
+router2.post('/', async (request, response) => {
+  try {
+      const { username, review } = request.body;
 
+      // Check if both fields are provided
+      if (!username || !review) {
+          return response.status(400).send({ message: 'Username and review are required' });
+      }
+
+      // Find the user by username and update the review field
+      const updatedUser = await User.findOneAndUpdate(
+          { userName: username },
+          { review: review }, // Update the review field
+          { new: true } // Return the updated document
+      );
+
+      if (!updatedUser) {
+          return response.status(404).send({ message: 'User not found' });
+      }
+
+      return response.status(200).json({
+          message: 'Review updated successfully',
+          data: updatedUser
+      });
+  } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
+  }
+});
 
 
 
