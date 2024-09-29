@@ -34,6 +34,8 @@ import Linked_List_Quiz from './pages/Linked_List_Quiz';
 import BST_quiz from './pages/BST_quiz';
 import Hashmap_quiz from './pages/Hashmap_quiz';
 import User_review from './pages/User_review';
+import Closed_hashing_quiz from './pages/Closed_hashing_quiz';
+
 
 
 
@@ -189,6 +191,7 @@ function App() {
         <Route path="/BST_quiz" element={<BST_quiz />} />
         <Route path="/Hashmap_quiz" element={<Hashmap_quiz />} />
         <Route path="/User_review" element={<User_review />} />
+        <Route path="/Closed_hashing_quiz" element={<Closed_hashing_quiz />} />
 
 
 
