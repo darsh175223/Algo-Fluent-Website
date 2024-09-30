@@ -35,6 +35,13 @@ import BST_quiz from './pages/BST_quiz';
 import Hashmap_quiz from './pages/Hashmap_quiz';
 import User_review from './pages/User_review';
 import Closed_hashing_quiz from './pages/Closed_hashing_quiz';
+import Selection_sort_quiz from './pages/Selection_sort_quiz';
+import Merge_quiz from './pages/Merge_quiz';
+import Quick_sort_quiz from './pages/Quick_sort_quiz';
+import RadixsortQuiz from './pages/RadixsortQuiz';
+import BubbleSortQuiz from './pages/BubbleSortQuiz';
+
+
 
 
 
@@ -192,6 +199,11 @@ function App() {
         <Route path="/Hashmap_quiz" element={<Hashmap_quiz />} />
         <Route path="/User_review" element={<User_review />} />
         <Route path="/Closed_hashing_quiz" element={<Closed_hashing_quiz />} />
+        <Route path="/Selection_sort_quiz" element={<Selection_sort_quiz />} />
+        <Route path="/Merge_quiz" element={<Merge_quiz />} />
+        <Route path="/Quick_sort_quiz" element={<Quick_sort_quiz />} />
+        <Route path="/RadixsortQuiz" element={<RadixsortQuiz />} />
+        <Route path="/BubbleSortQuiz" element={<BubbleSortQuiz />} />
 
 
 
