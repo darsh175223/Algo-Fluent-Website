@@ -247,7 +247,8 @@ const UserDashboard = () => {
               />
             </Link>
           </div>
-        <Link to="/user_review" style={{
+          <div>
+          <Link to="/user_review" style={{
             backgroundColor: 'yellow',
             color: 'black',
             padding: '25px 50px',
@@ -260,10 +261,30 @@ const UserDashboard = () => {
             textDecoration: 'none',
             position: 'absolute',
             top: '750px',
-            left: '650px',
+            left: '525px',
           }}>
           Reviews
         </Link>
+          <Link to="/More_simulations" style={{
+            backgroundColor: 'black',
+            color: 'yellow',
+            padding: '25px 50px',
+            border: 'none',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            margin: '20px 0',
+            fontSize: '24px',
+            boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
+            textDecoration: 'none',
+            position: 'absolute',
+            top: '750px',
+            left: '725px',
+          }}>
+          More Visualizations
+        </Link>
+
+          </div>
+        
 
 
         
