@@ -42,6 +42,7 @@ import RadixsortQuiz from './pages/RadixsortQuiz';
 import BubbleSortQuiz from './pages/BubbleSortQuiz';
 import More_simulations from './pages/More_simulations';
 import Stack from './pages/Stack';
+import Queue from './pages/Queue';
 
 
 
@@ -209,9 +210,10 @@ function App() {
         <Route path="/BubbleSortQuiz" element={<BubbleSortQuiz />} />
         <Route path="/More_simulations" element={<More_simulations />} />
         <Route path="/Stack" element={<Stack />} />
+        <Route path="/Queue" element={<Queue />} />
 
         
-
+        
 
       </Routes>
     </div>
