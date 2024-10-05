@@ -38,6 +38,10 @@ const UserDashboard = () => {
 <Link to="/Stack">
   <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>Stack</button>
 </Link>
+<Link to="/Queue">
+  <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>Queue</button>
+</Link>
+
 
 
 
