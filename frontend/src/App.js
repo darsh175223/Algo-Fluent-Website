@@ -43,6 +43,9 @@ import BubbleSortQuiz from './pages/BubbleSortQuiz';
 import More_simulations from './pages/More_simulations';
 import Stack from './pages/Stack';
 import Queue from './pages/Queue';
+import BinarySearch from './pages/binarySearch';
+
+
 
 
 
@@ -211,6 +214,7 @@ function App() {
         <Route path="/More_simulations" element={<More_simulations />} />
         <Route path="/Stack" element={<Stack />} />
         <Route path="/Queue" element={<Queue />} />
+        <Route path="/BinarySearch" element={<BinarySearch />} />
 
         
         
