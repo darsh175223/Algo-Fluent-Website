@@ -41,6 +41,10 @@ const UserDashboard = () => {
 <Link to="/Queue">
   <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>Queue</button>
 </Link>
+<Link to="/binarySearch">
+  <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>Binary Search</button>
+</Link>
+
 
 
 
