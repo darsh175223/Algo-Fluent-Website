@@ -44,7 +44,7 @@ import More_simulations from './pages/More_simulations';
 import Stack from './pages/Stack';
 import Queue from './pages/Queue';
 import BinarySearch from './pages/binarySearch';
-
+import LinearSearch from './pages/LinearSearch';
 
 
 
@@ -215,6 +215,7 @@ function App() {
         <Route path="/Stack" element={<Stack />} />
         <Route path="/Queue" element={<Queue />} />
         <Route path="/BinarySearch" element={<BinarySearch />} />
+        <Route path="/LinearSearch" element={<LinearSearch />} />
 
         
         
