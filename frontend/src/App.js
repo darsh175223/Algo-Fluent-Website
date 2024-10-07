@@ -45,6 +45,8 @@ import Stack from './pages/Stack';
 import Queue from './pages/Queue';
 import BinarySearch from './pages/binarySearch';
 import LinearSearch from './pages/LinearSearch';
+import DFS from './pages/DFS';
+
 
 
 
@@ -216,6 +218,7 @@ function App() {
         <Route path="/Queue" element={<Queue />} />
         <Route path="/BinarySearch" element={<BinarySearch />} />
         <Route path="/LinearSearch" element={<LinearSearch />} />
+        <Route path="/DFS" element={<DFS />} />
 
         
         
