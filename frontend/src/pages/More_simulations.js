@@ -47,6 +47,10 @@ const UserDashboard = () => {
 <Link to="/LinearSearch">
   <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>Linear Search</button>
 </Link>
+<Link to="/DFS">
+  <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>DFS</button>
+</Link>
+
 
 
 
