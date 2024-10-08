@@ -55,8 +55,9 @@ const UserDashboard = () => {
   <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>BFS</button>
 </Link>
 
-
-
+<Link to="/Dijestra">
+  <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>Dijestra</button>
+</Link>
 
 
 

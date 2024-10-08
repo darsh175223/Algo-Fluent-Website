@@ -47,6 +47,7 @@ import BinarySearch from './pages/binarySearch';
 import LinearSearch from './pages/LinearSearch';
 import DFS from './pages/DFS';
 import BFS from './pages/BFS';
+import Dijestra from './pages/Dijestra';
 
 
 
@@ -221,6 +222,7 @@ function App() {
         <Route path="/LinearSearch" element={<LinearSearch />} />
         <Route path="/DFS" element={<DFS />} />
         <Route path="/BFS" element={<BFS />} />
+        <Route path="/Dijestra" element={<Dijestra />} />
 
         
         
