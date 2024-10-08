@@ -49,7 +49,7 @@ import DFS from './pages/DFS';
 import BFS from './pages/BFS';
 import Dijestra from './pages/Dijestra';
 import TCP_IP from './pages/TCP-IP';
-
+import HTTP_Sim from './pages/HTTP_Sim';
 
 
 
@@ -224,6 +224,7 @@ function App() {
         <Route path="/BFS" element={<BFS />} />
         <Route path="/Dijestra" element={<Dijestra />} />
         <Route path="/TCP_IP" element={<TCP_IP />} />
+        <Route path="/HTTP_Sim" element={<HTTP_Sim />} />
 
         
         
