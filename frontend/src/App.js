@@ -48,7 +48,7 @@ import LinearSearch from './pages/LinearSearch';
 import DFS from './pages/DFS';
 import BFS from './pages/BFS';
 import Dijestra from './pages/Dijestra';
-
+import TCP_IP from './pages/TCP-IP';
 
 
 
@@ -223,10 +223,11 @@ function App() {
         <Route path="/DFS" element={<DFS />} />
         <Route path="/BFS" element={<BFS />} />
         <Route path="/Dijestra" element={<Dijestra />} />
+        <Route path="/TCP_IP" element={<TCP_IP />} />
 
         
         
-
+        
       </Routes>
     </div>
   );
