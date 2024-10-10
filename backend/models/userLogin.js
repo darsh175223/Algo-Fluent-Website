@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
     userName: { type: String, required: true },
     password: { type: String, required: true },
     lvl: { type: Number, required: true },
-    review: { type: String } // New field added, not required
+    review: { type: String }, // New field added, not required
+    loginTimes: { type: [String] },
 });
 
 export const User = mongoose.model('User', userSchema);

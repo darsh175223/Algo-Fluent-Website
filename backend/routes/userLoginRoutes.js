@@ -1,5 +1,6 @@
 import express from 'express';
 import {User} from "../models/userLogin.js";
+import router2 from './userUpdateRoutes.js';
 
 const router = express.Router();
 
@@ -7,12 +8,14 @@ const router = express.Router();
 router.post('/', async (request, response) => {
 
     try {
+      const registerTime = new Date().toString();
       const newUser1 = {
         firstName: request.body.firstName,
         lastName: request.body.lastName,
         userName: request.body.userName,
         password: request.body.password,
         lvl: '0',
+        loginTimes: [registerTime],
       };
   
       const userSend = await User.create(newUser1);
@@ -41,6 +44,7 @@ router.post('/', async (request, response) => {
     
         if(request.body.password==userSend.password){
             console.log("passwords matched!!!");
+
             return response.status(200).json({
                 count: userSend.length,
                 data: userSend
@@ -97,23 +101,6 @@ router.get('/', async (request, response) => {
     }
   });
 
-//get one book form database using id
-// router.get('/:id', async(request, response)=>{
-//     try{
-//         const {id} = request.params;
-//         const userSend = await User.findById(id);
-
-//         return response.status(200).json(userSend);
-
-
-
-//     }catch(error){
-//         console.log(error.message);
-//         response.status(500).send({message: error.message});
-
-
-//     }
-// });
 
 
 
@@ -171,10 +158,6 @@ router.delete('/:id', async (request, response) => {
       response.status(500).send({ message: error.message });
     }
   });
-
-  
-
-
 
 
 
