@@ -34,10 +34,11 @@ const LinearSearchVisualizer = () => {
   const [searching, setSearching] = useState(false);
 
   const handleGenerate = () => {
-    setArray(generateRandomArray(arraySize));
-    setCurrentIndex(-1);
-    setFound(false);
-    setSearching(false);
+    const newArray = generateRandomArray(arraySize); // Generate a new random array
+    setArray(newArray); // Update the state with the new array
+    setCurrentIndex(-1); // Reset the current index
+    setFound(false); // Reset the found state
+    setSearching(false); // Reset the searching state
   };
 
   const handleLinearSearch = () => {
