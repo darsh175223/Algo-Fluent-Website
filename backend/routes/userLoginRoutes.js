@@ -26,42 +26,33 @@ router.post('/', async (request, response) => {
     }
   });
 
-//   {
-//     "firstName": "fn",
-//     "lastName": "ln",
-//     "userName": "un",
-//     "password": "pw"
 
-// }
 //IMPORTANT: userLOGIN function
-  router.patch('/', async (request, response) => {
-    try{
-
+router.patch('/', async (request, response) => {
+    try {
         const u = request.body.password;
+        const userSend = await User.findOne({ userName: u });
 
-        
-        const userSend = await User.findOne({userName: u});
-    
-        if(request.body.password==userSend.password){
+        if (request.body.password == userSend.password) {
             console.log("passwords matched!!!");
+
+            // New functionality to set loginTime and update loginTimes array
+            const loginTime = new Date().toString();
+            userSend.loginTimes.push(loginTime); // Append loginTime to loginTimes array
+            await userSend.save(); // Save the updated user document
 
             return response.status(200).json({
                 count: userSend.length,
                 data: userSend
             });
-        }else{
-            response.status(500).send({message: 'passwords didnt match'});
-
-        }     
-
-
-    }catch(error){
+        } else {
+            response.status(500).send({ message: 'passwords didnt match' });
+        }
+    } catch (error) {
         console.log(error.message);
-        response.status(500).send({message: error.message});
-
-
+        response.status(500).send({ message: error.message });
     }
-  });
+});
 
 
     // Route to get the level of a user by username
