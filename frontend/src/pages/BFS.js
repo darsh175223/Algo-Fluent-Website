@@ -183,7 +183,7 @@ const BFSVisualizer = () => {
       <div style={styles.infoPanel}>
         <h3 style={styles.infoHeader}>How Breadth First Search Works:</h3>
         <p style={styles.infoText}>
-          Breadth First Search (BFS) is a graph traversal algorithm that explores all the neighbor nodes at the present depth prior to moving on to nodes at the next depth level. It uses a queue to keep track of nodes to visit. The algorithm starts at a root node and explores all its neighbors before moving to the next level.
+          Breadth First Search (BFS) is a graph traversal algorithm that explores all the neighbor nodes at the present depth prior to moving on to nodes at the next depth level. It uses a queue to keep track of nodes to visit. The algorithm starts at a root node and explores all its neighbors before moving to the next level. This process continues until all nodes have been visited.
         </p>
         <p style={styles.infoText}>
           Color code: Yellow = Current node, Green = Visited node, Gray = Unvisited node
