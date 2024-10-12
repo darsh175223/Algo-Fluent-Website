@@ -51,6 +51,7 @@ import Dijestra from './pages/Dijestra';
 import TCP_IP from './pages/TCP-IP';
 import HTTP_Sim from './pages/HTTP_Sim';
 import RoutingSim from './pages/RoutingSim';
+import BGP from './pages/BGP';
 
 
 
@@ -227,6 +228,7 @@ function App() {
         <Route path="/TCP_IP" element={<TCP_IP />} />
         <Route path="/HTTP_Sim" element={<HTTP_Sim />} />
         <Route path="/RoutingSim" element={<RoutingSim />} />
+        <Route path="/BGP" element={<BGP />} />
 
         
         
