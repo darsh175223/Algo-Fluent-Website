@@ -69,6 +69,10 @@ const UserDashboard = () => {
 <Link to="/RoutingSim">
   <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>Routing Sim</button>
 </Link>
+<Link to="/BGP">
+  <button style={{backgroundColor: '#6a0dad', color: 'white', padding: '15px 32px', margin: '10px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px'}}>BGP</button>
+</Link>
+
 
 
 
