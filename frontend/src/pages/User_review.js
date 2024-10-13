@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 const BST_Quiz = () => {
@@ -8,6 +8,9 @@ const BST_Quiz = () => {
   const [rating, setRating] = useState(0); // State to hold the rating value
   const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
+  const [username, setUserName] = useState(location.state?.username || ''); // Fallback to 'Guest'
+  const navigate = useNavigate();
+
   
   const handleSubmit = () => {
     fetch('/api/update-review', { // Adjust the endpoint as needed
@@ -37,6 +40,12 @@ const BST_Quiz = () => {
       justifyContent: 'center',
       alignItems: 'center'
     }}>
+      <img
+          src={require('.././pics/goBacktoDashfromTradingSim.png')}
+          alt="Go back to dashboard"
+          style={{ position: 'absolute', top: '160px', right: '1450px', cursor: 'pointer', width: '50px', height: '50px' }}
+          onClick={() => navigate('/userDashboard', { state: { username } })}
+        />
       <div style={{
         width: '1100px',
         minHeight: '800px',
@@ -45,6 +54,7 @@ const BST_Quiz = () => {
         borderRadius: '10px',
         padding: '20px'
       }}>
+        
         <center>
           <h1>User Reviews</h1>
           <label style={{ fontSize: '24px' }}>Rate this website out of 10:</label>
