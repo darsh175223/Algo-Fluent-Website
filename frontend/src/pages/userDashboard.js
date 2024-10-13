@@ -279,7 +279,7 @@ const UserDashboard = () => {
             position: 'absolute',
             top: '750px',
             left: '725px',
-          }}>
+          }} state={{ username }}>
           More Visualizations
         </Link>
 
