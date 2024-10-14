@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation , useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
@@ -9,6 +9,9 @@ const UserDashboard = () => {
   const [topics, setTopics] = useState({ beginner: [], intermediate: [], expert: [] });
   const [loading, setLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
+  const [username, setUserName] = useState(location.state?.username || ''); // Fallback to 'Guest'
+  const navigate = useNavigate();
+
   
   // New state to keep track of the last scheduled date
   const [lastScheduledDate, setLastScheduledDate] = useState(null);
@@ -189,6 +192,12 @@ const UserDashboard = () => {
       justifyContent: 'center',
       alignItems: 'center'
     }}>
+      <img
+          src={require('.././pics/goBacktoDashfromTradingSim.png')}
+          alt="Go back to dashboard"
+          style={{ position: 'absolute', top: '160px', right: '1450px', cursor: 'pointer', width: '50px', height: '50px' }}
+          onClick={() => navigate('/userDashboard', { state: { username } })}
+        />
       <div style={{
         width: '1100px',
         minHeight: '800px',
