@@ -127,10 +127,10 @@ const UserDashboard = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '500px', alignItems: 'center' }}>
             <progress value={userLevel * 5} max="100" style={{ width: '350px', height: '20px', color: 'green' }}></progress>
             <div style={{ width: '20px' }}></div>
-            <Link to="/ScheduleSession" style={{ backgroundColor: '#4CAF50', color: 'white', padding: '15px 15px', margin: '4px 2px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px' }}>
+            <Link to="/ScheduleSession" style={{ backgroundColor: '#4CAF50', color: 'white', padding: '15px 15px', margin: '4px 2px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px' }} state={{ username }}>
               Schedule Study Sessions
             </Link>
-            <Link to="/DSA_quizzes" style={{ backgroundColor: '#E0BBE4', color: 'black', padding: '15px 15px', margin: '4px 2px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px' }}>
+            <Link to="/DSA_quizzes" style={{ backgroundColor: '#E0BBE4', color: 'black', padding: '15px 15px', margin: '4px 2px', cursor: 'pointer', borderRadius: '5px', display: 'inline-block', textDecoration: 'none', fontSize: '16px' }} state={{ username }}>
               Additional Quizzes
             </Link>
           </div>
