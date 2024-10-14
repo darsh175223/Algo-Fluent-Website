@@ -1,95 +1,133 @@
 .register-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #bac4d3;
-    padding: 1rem; /* Added padding to ensure centering with smaller width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #141414; /* Dark background for consistency */
+}
+
+.register-right {
+  background: #242424; /* Dark card background */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px; /* Adjusted max-width */
+  width: 100%;
+  color: #e0e0e0; /* Light text color for better readability */
+}
+
+.register-right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-center {
+  text-align: center;
+  width: 100%;
+}
+
+.register-center h2 {
+  margin-bottom: 0.5rem;
+  color: #e0e0e0; /* Light text color */
+}
+
+.register-center p {
+  margin-bottom: 1rem;
+  color: #777;
+}
+
+.register-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #444;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+  background-color: #403d3d; /* Dark input background */
+  color: #e0e0e0; /* Light text color */
+}
+
+.register-input:focus {
+  border-color: #4a90e2; /* Blue focus border */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); /* Subtle focus effect */
+}
+
+.pass-input-div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #777;
+}
+
+.register-center-buttons {
+  width: 100%;
+}
+
+.register-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4a90e2; /* Blue button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #3a78c2; /* Darker blue on hover */
+}
+
+.register-bottom-p {
+  margin-top: 1rem;
+  color: #777;
+}
+
+.register-bottom-p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-bottom-p a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .register-main {
+    background-color: #181818; /* Darker background for dark mode */
   }
-  
+
   .register-right {
-    background: #ffffff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 300px; /* Adjusted max-width to make it smaller */
-    width: 100%;
+    background-color: #242424; /* Dark card background */
   }
-  
-  .register-right-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .register-center {
-    text-align: center;
-    width: 100%;
-  }
-  
-  .register-center h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .register-center p {
-    margin-bottom: 1rem;
-    color: #777;
-  }
-  
+
   .register-input {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
+    border: 1px solid #555; /* Darker border */
   }
-  
-  .pass-input-div {
-    display: flex;
-    align-items: center;
-    position: relative;
+
+  .register-input:focus {
+    border-color: #4a90e2; /* Keep focus color */
   }
-  
-  .password-icon {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    color: #777;
-  }
-  
-  .register-center-buttons {
-    width: 100%;
-  }
-  
+
   .register-button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
+    background-color: #0056b3; /* Darker primary color */
   }
-  
+
   .register-button:hover {
-    background-color: #0056b3;
+    background-color: #004494; /* Darker shade on hover */
   }
-  
+
+  .register-center h2,
   .register-bottom-p {
-    margin-top: 1rem;
-    color: #777;
+    color: #aaa; /* Lighter text color */
   }
-  
-  .register-bottom-p a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .register-bottom-p a:hover {
-    text-decoration: underline;
-  }
-  
+}
