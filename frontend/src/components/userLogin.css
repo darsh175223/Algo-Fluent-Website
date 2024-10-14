@@ -3,30 +3,43 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5; /* Light background color */
 }
 
 .login-card {
-  background-color: white;
+  
+  background-color: #141414; /* Dark card background */
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 400px; /* Fixed width for the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 400px;
   text-align: center;
+  color: #e0e0e0; /* Light text color for better readability */
+}
+
+.login-card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.login-card p {
+  margin-bottom: 1.5rem;
+  color: #b0b0b0;
 }
 
 .login-input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ddd;
+  border: 1px solid #444;
   border-radius: 5px;
   transition: border-color 0.3s;
+  background-color: #403d3d; /* As requested */
+  color: #e0e0e0;
 }
 
 .login-input:focus {
-  border-color: #007bff; /* Change border color on focus */
+  border-color: #4a90e2;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); /* Subtle focus effect */
 }
 
 .pass-input-div {
@@ -39,25 +52,59 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #777;
+  color: #999;
+}
+
+.login-center-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .login-button {
-  width: 100%;
+  width: 50%; /* Half of the previous width */
   padding: 10px;
-  background-color: #007bff; /* Primary color */
+  background-color: #4a90e2;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .login-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #3a78c2;
+}
+
+.login-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.5s ease-out;
+}
+
+.login-button:hover::after {
+  transform: scale(1);
 }
 
 .login-bottom-p {
   margin-top: 20px;
-  color: #777;
+  color: #b0b0b0;
+}
+
+.login-bottom-p a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.login-bottom-p a:hover {
+  text-decoration: underline;
 }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
-import "./userLogin.css"; // Import the CSS file
+import { Link, useNavigate } from 'react-router-dom';
+import "./userLogin.css"; // Updated CSS file name
 import { useSnackbar } from 'notistack';
 
-const Login = () => {
+export default function Component() {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -75,6 +75,4 @@ const Login = () => {
       </div>
     </div>
   );
-};
-
-export default Login;
+}
