@@ -52,6 +52,7 @@ import TCP_IP from './pages/TCP-IP';
 import HTTP_Sim from './pages/HTTP_Sim';
 import RoutingSim from './pages/RoutingSim';
 import BGP from './pages/BGP';
+import Stack_Quiz from './pages/Stack_Quiz';
 
 
 
@@ -229,6 +230,7 @@ function App() {
         <Route path="/HTTP_Sim" element={<HTTP_Sim />} />
         <Route path="/RoutingSim" element={<RoutingSim />} />
         <Route path="/BGP" element={<BGP />} />
+        <Route path="/Stack_Quiz" element={<Stack_Quiz />} />
 
         
         
