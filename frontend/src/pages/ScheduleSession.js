@@ -135,51 +135,53 @@ const UserDashboard = () => {
     enqueueSnackbar(`Added ${topic} to your study plan for ${nextStudyDate.toDateString()}`, { variant: 'success' });
   };
 
-  // Function to gauge difficulty of a user-input topic
-  const gaugeDifficulty = async () => {
-    console.log(`Gauging difficulty for topic: ${userTopic}`);
-    setGaugingDifficulty(true);
+ // Function to gauge difficulty of a user-input topic using Ollama v3.2
+const gaugeDifficulty = async () => {
+  console.log(`Gauging difficulty for topic: ${userTopic}`);
+  setGaugingDifficulty(true);
 
-    const API_URL = "https://api-inference.huggingface.co/models/gpt2";
-    const headers = {
-      Authorization: `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
-    };
-
-    const prompt = `Hi, I'm an expert in Computer Science topics and I can rank a computer science topic by the order of Very easy, easy, medium, hard, very hard. I would say the computer science topic of ${userTopic} is: `;
-
-    try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify({ inputs: prompt }),
-      });
-
-      if (!response.ok) {
-        // Check if the response status indicates too many requests
-        if (response.status === 429) {
-          alert("Too many requests. Try again later."); // Alert for too many requests
-        } else {
-          throw new Error('Failed to gauge difficulty.'); // Throw error for other failures
-        }
-      }
-
-      const data = await response.json();
-      console.log('GPT-2 response:', data[0].generated_text);
-
-      // Extract the first word of the response
-      const difficulty = data[0].generated_text.split(' ')[0];
-      console.log('Extracted difficulty:', difficulty);
-
-      setTopicDifficulty(difficulty);
-      enqueueSnackbar(`Difficulty of "${userTopic}" gauged successfully!`, { variant: 'success' });
-    } catch (error) {
-      console.error('Error gauging difficulty:', error);
-      enqueueSnackbar('Failed to gauge difficulty. Please try again.', { variant: 'error' });
-    } finally {
-      setGaugingDifficulty(false);
-    }
+  // Update the API URL to Ollama v3.2
+  const API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-1B";  // Example URL, replace with actual one
+  const headers = {
+    Authorization: `Bearer ${API_KEY}`,  // Replace API_KEY with your actual key
+    'Content-Type': 'application/json',
   };
+
+  // Prompt for Ollama v3.2 (adjust if Ollama requires a different structure)
+  const prompt = `Hi, I'm an expert in Computer Science topics and I can rank a computer science topic by the order of Very easy, easy, medium, hard, very hard. I would say the computer science topic of ${userTopic} is: `;
+
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ prompt: prompt }),  // Adjust the body format if needed
+    });
+
+    if (!response.ok) {
+      if (response.status === 429) {
+        alert("Too many requests. Try again later.");  // Alert for rate limiting
+      } else {
+        throw new Error('Failed to gauge difficulty.');
+      }
+    }
+
+    const data = await response.json();
+    console.log('Ollama v3.2 response:', data[0].generated_text);
+
+    // Extract the first word of the response
+    const difficulty = data[0].generated_text.split(' ')[0];
+    console.log('Extracted difficulty:', difficulty);
+
+    setTopicDifficulty(difficulty);
+    enqueueSnackbar(`Difficulty of "${userTopic}" gauged successfully!`, { variant: 'success' });
+  } catch (error) {
+    console.error('Error gauging difficulty:', error);
+    enqueueSnackbar('Failed to gauge difficulty. Please try again.', { variant: 'error' });
+  } finally {
+    setGaugingDifficulty(false);
+  }
+};
+
 
   return (
     <div style={{
