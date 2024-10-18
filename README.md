@@ -40,7 +40,7 @@ Key features include:
 
 ## Usage
 
-Link: https://superb-clafoutis-f38617.netlify.app/
+Link: https://algo-fluent.netlify.app/
 - Please be patient, first-time registration/login takes a minute!
 
 ## Contributing
