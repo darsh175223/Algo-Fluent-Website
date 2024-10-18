@@ -40,7 +40,7 @@ export default function Component() {
     <div className="login-main">
       <div className="login-card">
         <h2>Welcome back!</h2>
-        <p>Please enter your details</p>
+        <p>Enter your details ( Note: Login might take some time)</p>
         <form>
           <input
             type="email"
