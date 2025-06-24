@@ -1,2 +1,8 @@
 node_modules
 env
+frontend/mnist_model.h5
+frontend/x_train.npy
+frontend/y_train.npy
+frontend/myenv
+frontend/__pycache__
+.gitignore

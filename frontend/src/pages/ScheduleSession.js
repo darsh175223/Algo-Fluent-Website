@@ -143,7 +143,7 @@ const gaugeDifficulty = async () => {
   // Update the API URL to Ollama v3.2
   const API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-1B";  // Example URL, replace with actual one
   const headers = {
-    Authorization: `Bearer ${API_KEY}`,  // Replace API_KEY with your actual key
+    Authorization: `Bearer ${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}`,  // Replace API_KEY with your actual key
     'Content-Type': 'application/json',
   };
 
