@@ -9,6 +9,7 @@ Key features include:
 - User authentication using the MERN stack
 - Handwritten digit recognition powered by a Flask-based microservice with TensorFlow
 - Robust deployment using Kubernetes for high availability and efficient resource management
+- Automated study planner
 
 
 ## Features
@@ -39,7 +40,7 @@ Key features include:
 
 ## Usage
 
-Link: https://superb-clafoutis-f38617.netlify.app/
+Link: https://algo-fluent.netlify.app/
 - Please be patient, first-time registration/login takes a minute!
 
 ## Contributing
